@@ -1,9 +1,8 @@
 import React from "react";
-import { Button, Card, CardActions, CardContent, Typography, TextField, Slider, Box, OutlinedInput, InputLabel, MenuItem, FormControl, Select, Avatar, Stack, Grid } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-
-
-
+import { Button, Card, CardActions, CardContent, Typography, TextField, Slider, Box, OutlinedInput, InputLabel, MenuItem, FormControl, Select, Avatar, Stack, Grid, Chip, Paper } from '@mui/material';
+import { useTheme, styled } from '@mui/material/styles';
+// import TagFacesIcon from '@mui/icons-material/TagFaces';
+// import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 
 const ITEM_HEIGHT = 56;
@@ -33,6 +32,10 @@ function getStyles(name, personName, theme) {
   };
 }
 
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
+
 
 
 
@@ -52,6 +55,19 @@ const handleChange = (event) => {
   );
 };
 
+const [chipData, setChipData] = React.useState([
+  { key: 0, label: '6 Poke Balls' },
+  { key: 1, label: '10 Great Balls' },
+  { key: 2, label: '10 Super Potions' },
+  // { key: 3, label: 'React' },
+  // { key: 4, label: 'Vue.js' },
+]);
+
+const handleDelete = (chipToDelete) => () => {
+  setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+};
+
+
   return (
 
     <Grid
@@ -66,12 +82,23 @@ const handleChange = (event) => {
     <Card sx={{ minWidth: 275 }}>
     
       <CardContent>
-        <Typography align="center" sx={{ fontSize: 32 }} style={{color:"#FE5454"}} gutterBottom>
+      <Typography variant="title" color="inherit" noWrap>
+    &nbsp;
+  </Typography>
+        <Typography align="center" sx={{fontWeight: 'bold', fontSize: 32}}  style={{color:"#FE5454"}} gutterBottom>
           Fill this form
         </Typography>
-        <Typography align="center" sx={{ fontSize: 18 }} style={{color:"#889296"}}>
+        <Typography variant="title" color="inherit" noWrap>
+    &nbsp;
+  </Typography>
+
+        <Typography align="center" sx={{ fontSize: 18, fontWeight: 'bold' }} style={{color:"#889296"}}>
           We'll use this info to dominate the poke world! Muhahahahahah
         </Typography>
+        <Typography >
+    &nbsp;
+  </Typography>
+  
         <div>
         <TextField
           error
@@ -83,9 +110,15 @@ const handleChange = (event) => {
           align="center"
         />
         </div>
+        <Typography >
+    &nbsp;
+  </Typography>
         <div>
         <TextField id="filled-basic" align="center" label="Code Name" variant="filled" />
         </div>
+        <Typography >
+    &nbsp;
+  </Typography>
         <Box width={328}>
         <Slider
         align="center"
@@ -95,10 +128,16 @@ const handleChange = (event) => {
         valueLabelDisplay="auto"
       />
         </Box>
+        <Typography >
+    &nbsp;
+  </Typography>
 
         <Typography align="center" sx={{ fontSize: 14 }} style={{color:"#000000DE"}}>
         How far is your nearest pokemon center? (In KMs)
         </Typography>
+        <Typography >
+    &nbsp;
+  </Typography>
 
  
        
@@ -126,25 +165,82 @@ const handleChange = (event) => {
         </Select>
       </FormControl>
     </div>
+    <Typography >
+    &nbsp;
+  </Typography>
 
-    <Typography align="center" sx={{ fontSize: 16 }} style={{color:"#00000099"}}>
+    <Typography align="left" sx={{ fontSize: 16 }} style={{color:"#00000099"}}>
     Choose your starter pokemon
         </Typography>
+        <Typography >
+    &nbsp;
+  </Typography>
 
         <Stack direction="row" spacing={2}>
         <Avatar src="/images/pokemon1.webp" />
         <Avatar src="/images/pokemon2.webp" />
         <Avatar src="/images/pokemon3.webp" />
         </Stack>
+        <Typography >
+    &nbsp;
+  </Typography>
+
+
+        <Typography align="left" sx={{ fontSize: 16 }} style={{color:"#00000099"}}>
+    What do you want to pack?
+    
+  
+    
+        </Typography>
+        <Typography >
+    &nbsp;
+  </Typography>
+        {/* < AddCircleOutlineIcon/> */}
+        
 
         
        
         
         
       </CardContent>
-      <CardActions>
+      <Paper
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        p: 0.5,
+        m: 0,
+      }}
+      component="ul"
+    >
+      {chipData.map((data) => {
+        let icon;
+
+        // if (data.label === 'React') {
+        //   icon = <TagFacesIcon />;
+        // }
+
+        return (
+          <ListItem key={data.key}>
+            <Chip
+              icon={icon}
+              label={data.label}
+              onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+            />
+          </ListItem>
+        );
+      })}
+  <div>
+  <CardActions>
         <Button size="small">START MY JOURNEY</Button>
       </CardActions>
+  </div>
+      
+
+      </Paper>
+
+      
       
     </Card>
     </Grid>
