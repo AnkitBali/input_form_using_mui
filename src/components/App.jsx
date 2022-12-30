@@ -3,7 +3,7 @@ import { Button, Card, CardActions, CardContent, Typography, TextField, Slider, 
 import { useTheme, styled } from '@mui/material/styles';
 // import TagFacesIcon from '@mui/icons-material/TagFaces';
 // import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-
+// import Image from '/bgimg.png'
 
 const ITEM_HEIGHT = 56;
 const ITEM_PADDING_TOP = 8;
@@ -17,10 +17,9 @@ const MenuProps = {
 };
 
 const names = [
-  'Delhi',
-  'Coimbatore',
-  'Chennai',
-  'Mumbai',
+  'Kanto',
+  'Jhoto',
+  'Hoenn',
 ];
 
 function getStyles(name, personName, theme) {
@@ -69,6 +68,14 @@ const handleDelete = (chipToDelete) => () => {
 
 
   return (
+    
+    <div style={{ backgroundImage: `url("/images/bgimg.png")`, backgroundRepeat: "no-repeat"}}>
+      
+       
+       <Paper >
+
+</Paper>
+    
 
     <Grid
     container
@@ -79,28 +86,21 @@ const handleDelete = (chipToDelete) => () => {
     style={{ minHeight: '100vh' }}
    >
      <Grid item xs={3}>
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ width: 488, height:1181, m:20 }}>
     
       <CardContent>
-      <Typography variant="title" color="inherit" noWrap>
-    &nbsp;
-  </Typography>
-        <Typography align="center" sx={{fontWeight: 'bold', fontSize: 32}}  style={{color:"#FE5454"}} gutterBottom>
+        <Typography align="center" sx={{fontWeight: 'bold', fontSize: 32, p: 2}}  style={{color:"#FE5454"}} gutterBottom>
           Fill this form
         </Typography>
-        <Typography variant="title" color="inherit" noWrap>
-    &nbsp;
-  </Typography>
+        
 
-        <Typography align="center" sx={{ fontSize: 18, fontWeight: 'bold' }} style={{color:"#889296"}}>
+        <Typography align="center" sx={{ fontSize: 18, fontWeight: 'bold', p: 1 }} style={{color:"#889296"}}>
           We'll use this info to dominate the poke world! Muhahahahahah
         </Typography>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
   
-        <div>
-        <TextField
+        <div >
+        <TextField 
           error
           // id="filled-error-helper-text"
           label="Full Name"
@@ -110,15 +110,11 @@ const handleDelete = (chipToDelete) => () => {
           align="center"
         />
         </div>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
         <div>
         <TextField id="filled-basic" align="center" label="Code Name" variant="filled" />
         </div>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
         <Box width={328}>
         <Slider
         align="center"
@@ -128,16 +124,12 @@ const handleDelete = (chipToDelete) => () => {
         valueLabelDisplay="auto"
       />
         </Box>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
 
         <Typography align="center" sx={{ fontSize: 14 }} style={{color:"#000000DE"}}>
         How far is your nearest pokemon center? (In KMs)
         </Typography>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
 
  
        
@@ -165,25 +157,19 @@ const handleDelete = (chipToDelete) => () => {
         </Select>
       </FormControl>
     </div>
-    <Typography >
-    &nbsp;
-  </Typography>
+    
 
     <Typography align="left" sx={{ fontSize: 16 }} style={{color:"#00000099"}}>
     Choose your starter pokemon
         </Typography>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
 
         <Stack direction="row" spacing={2}>
         <Avatar src="/images/pokemon1.webp" />
         <Avatar src="/images/pokemon2.webp" />
         <Avatar src="/images/pokemon3.webp" />
         </Stack>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
 
 
         <Typography align="left" sx={{ fontSize: 16 }} style={{color:"#00000099"}}>
@@ -192,9 +178,7 @@ const handleDelete = (chipToDelete) => () => {
   
     
         </Typography>
-        <Typography >
-    &nbsp;
-  </Typography>
+        
         {/* < AddCircleOutlineIcon/> */}
         
 
@@ -245,5 +229,6 @@ const handleDelete = (chipToDelete) => () => {
     </Card>
     </Grid>
     </Grid> 
+    </div>
   );
 }
